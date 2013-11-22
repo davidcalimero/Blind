@@ -797,6 +797,8 @@
     <instance objName="obj_mushroom" x="392" y="168" name="inst_3E4C2464" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mushroom" x="448" y="288" name="inst_00347885" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mushroom" x="904" y="224" name="inst_C04EE177" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_monster" x="1088" y="312" name="inst_C44FF400" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bee" x="728" y="320" name="inst_6422EC94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

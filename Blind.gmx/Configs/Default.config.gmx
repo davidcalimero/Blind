@@ -43,11 +43,11 @@
     <option_android_licensing_key></option_android_licensing_key>
     <option_android_major_version>1</option_android_major_version>
     <option_android_minor_version>0</option_android_minor_version>
-    <option_android_mobage>false</option_android_mobage>
+    <option_android_mobage>0</option_android_mobage>
     <option_android_mobage_appkey></option_android_mobage_appkey>
     <option_android_mobage_extension_location></option_android_mobage_extension_location>
     <option_android_mobage_key></option_android_mobage_key>
-    <option_android_mobage_sandbox>false</option_android_mobage_sandbox>
+    <option_android_mobage_sandbox>0</option_android_mobage_sandbox>
     <option_android_mobage_secret></option_android_mobage_secret>
     <option_android_mobage_version></option_android_mobage_version>
     <option_android_orient_landscape>true</option_android_orient_landscape>
@@ -236,7 +236,7 @@
     <option_tizen_splash_png>Configs\Default\tizen\splash.png</option_tizen_splash_png>
     <option_tizen_texture_page>1024</option_tizen_texture_page>
     <option_tizen_usesplash>False</option_tizen_usesplash>
-    <option_use_new_audio>False</option_use_new_audio>
+    <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
     <option_version>100</option_version>
     <option_version_build>0</option_version_build>
