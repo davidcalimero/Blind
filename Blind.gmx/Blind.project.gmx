@@ -5,9 +5,65 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_blockh</sprite>
+    <sprite>sprites\spr_death</sprite>
+    <sprite>sprites\spr_blockv</sprite>
+    <sprite>sprites\spr_ladder</sprite>
+    <sprite>sprites\spr_right</sprite>
+    <sprite>sprites\spr_left</sprite>
+    <sprites name="monsters">
+      <sprite>sprites\spr_monsterl</sprite>
+      <sprite>sprites\spr_monsterr</sprite>
+      <sprite>sprites\spr_monsterflat</sprite>
+      <sprite>sprites\spr_marker</sprite>
+      <sprite>sprites\spr_flyingl</sprite>
+      <sprite>sprites\spr_flyingr</sprite>
+    </sprites>
+    <sprite>sprites\spr_mushroom</sprite>
+    <sprite>sprites\spr_level</sprite>
+    <sprite>sprites\spr_climbing</sprite>
+    <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_alpha</sprite>
+    <sprite>sprites\spr_apha2</sprite>
+    <sprite>sprites\spr_test</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\back_sky</background>
+    <background>background\back_tiles</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scrpt_blowup.gml</script>
+    <script>scripts\script_2.gml</script>
+    <script>scripts\script_global.gml</script>
+    <script>scripts\script_bullets.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
+  <objects name="objects">
+    <object>objects\obj_character</object>
+    <object>objects\obj_block</object>
+    <object>objects\obj_blockh</object>
+    <object>objects\obj_blockv</object>
+    <object>objects\obj_monster</object>
+    <object>objects\obj_flyer</object>
+    <object>objects\obj_marker</object>
+    <object>objects\obj_monster_dead</object>
+    <object>objects\obj_mushroom</object>
+    <object>objects\obj_levelexit</object>
+    <object>objects\obj_death</object>
+    <object>objects\obj_ladder</object>
+    <object>objects\object12</object>
+    <object>objects\obj_blendable</object>
+    <object>objects\obj_test</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room2</room>
+    <room>rooms\rm_main</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
