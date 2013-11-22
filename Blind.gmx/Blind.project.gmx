@@ -29,16 +29,10 @@
     <sprite>sprites\spr_apha2</sprite>
     <sprite>sprites\spr_test</sprite>
   </sprites>
-  <backgrounds name="background">
-    <background>background\back_sky</background>
-    <background>background\back_tiles</background>
-  </backgrounds>
+  <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scrpt_blowup.gml</script>
-    <script>scripts\script_2.gml</script>
-    <script>scripts\script_global.gml</script>
-    <script>scripts\script_bullets.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -62,7 +56,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
-    <room>rooms\rm_main</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
