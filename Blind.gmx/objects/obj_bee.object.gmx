@@ -26,9 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>// 30 steps = 1 segundo
-PlayerObject = obj_character // objecto do jogador
+PlayerObject = obj_character// objecto do jogador
 StepsToNextAttack = 20      // ataca a cada 20 steps
 ViewRadius = 100            // raio de visao para detectar o jogador
+VerticalPerception = 20     // capacidade de detectar o jogador verticalmente
 NoiseRadius = 200           // raio a que pode ser ouvido pelo jogador
 VelocityX_Angry = 3         // velocidade horizontal (zangado)
 VelocityX_Calm = 2          // velocidade horizontal (calmo)
@@ -75,10 +76,11 @@ audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(distance_to_object(PlayerObject)&lt;ViewRadius) { isPlayerNearby = true } 
+            <string>distanceToPlayer = distance_to_object(PlayerObject)
+if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { isPlayerNearby = true } 
 else { isPlayerNearby = false }
 
-if(distance_to_object(PlayerObject)&lt;NoiseRadius) { 
+if(distanceToPlayer&lt;NoiseRadius) { 
     audio_emitter_gain(emitter_buzz,SoundGain_Buzz)
     audio_emitter_gain(emitter_impact,SoundGain_Impact)
 }
@@ -96,10 +98,16 @@ audio_emitter_position(emitter_impact,PlayerObject.x-x,PlayerObject.y-y,0)
 if(isPlayerNearby) {
     if(PlayerObject.x&gt;x) {
         if(abs(PlayerObject.x-x)&lt;3) { x = PlayerObject.x } 
-        else { x += VelocityX_Angry }
+        else { 
+            x += VelocityX_Angry
+            isMovingRight = true
+        }
     } else {
         if(abs(PlayerObject.x-x)&lt;3) { x = PlayerObject.x }
-        else { x -= VelocityX_Angry }
+        else {
+            x -= VelocityX_Angry
+            isMovingRight = false
+        }
     }
     if(x&gt;MaxX) { x = MaxX }
     if(x&lt;MinX) { x = MinX }
