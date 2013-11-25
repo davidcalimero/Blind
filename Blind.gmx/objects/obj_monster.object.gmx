@@ -38,8 +38,8 @@ VelocityX_Angry = 3
 SoundGain_Bark = 0.5
 SoundGain_Roar = 1.0
 SoundGain_Impact = 1.0
-MaxX = x + 150
-MinX = x - 150
+MaxX = x + 155
+MinX = x - 155
 isPlayerNearby = false
 isMovingRight = true
 stepsToNextSound = 0
@@ -124,6 +124,7 @@ if(isPlayerNearby) {
         x = PlayerObject.x
         if(stepsToNextAttack == 0) {
             audio_play_sound_on(emitter_impact,snd_impact1,false,1)
+            PlayerObject.vidas -= 2
             stepsToNextAttack = StepsToNextAttack
         } else { stepsToNextAttack -= 1 } 
     } else if(PlayerObject.x&gt;x) {
