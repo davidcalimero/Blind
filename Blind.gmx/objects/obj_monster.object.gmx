@@ -44,6 +44,7 @@ isPlayerNearby = false
 isMovingRight = true
 stepsToNextSound = 0
 stepsToNextAttack = 0
+footprints = false
 
 emitter_bark = audio_emitter_create()
 emitter_roar = audio_emitter_create()
@@ -124,7 +125,7 @@ if(isPlayerNearby) {
         x = PlayerObject.x
         if(stepsToNextAttack == 0) {
             audio_play_sound_on(emitter_impact,snd_impact1,false,1)
-            PlayerObject.vidas -= 2
+            PlayerObject.health -= 50
             stepsToNextAttack = StepsToNextAttack
         } else { stepsToNextAttack -= 1 } 
     } else if(PlayerObject.x&gt;x) {

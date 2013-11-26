@@ -105,6 +105,26 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>721</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_set_health</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>100</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -123,7 +143,7 @@
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>vidas &lt;= 0</string>
+            <string>health &lt;= 0</string>
           </argument>
         </arguments>
       </action>
@@ -1506,13 +1526,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(0.5);
-draw_set_color(c_gray);
-draw_rectangle(0, 0, 125, 55, false);
-draw_set_alpha(1.0);
-draw_set_color(c_black);
-draw_text(10,10,"Vidas: " + string(vidas));
-draw_text(10,30,"Materia X: " + string(materia_x));
+            <string>//draw_set_alpha(0.5);
+//draw_set_color(c_gray);
+//draw_rectangle(0, 0, 125, 55, false);
+//draw_set_alpha(1.0);
+//draw_set_color(c_black);
+//draw_text(10,10,"Vidas: " + string(vidas));
+//draw_text(10,30,"Materia X: " + string(materia_x));
 </string>
           </argument>
         </arguments>

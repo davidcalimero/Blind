@@ -46,6 +46,7 @@ isPlayerNearby = false      // se o jogador esta perto
 isMovingRight = true        // se o jogador esta a ir para a direita
 isMovingUp = true           // se o jogador esta a ir para cima
 stepsToNextAttack = 0       // steps para o proximo ataque
+footprints = false
 
 emitter_impact = audio_emitter_create()
 emitter_buzz = audio_emitter_create()
@@ -121,7 +122,7 @@ if(isPlayerNearby) {
         } else {
             if(x==PlayerObject.x) { 
                 audio_play_sound_on(emitter_impact,snd_impact1,false,1)
-                PlayerObject.vidas -= 1
+                PlayerObject.health -= 25
             }
             isMovingUp = true
             stepsToNextAttack = StepsToNextAttack
@@ -143,6 +144,27 @@ if(isPlayerNearby) {
         else { isMovingUp = true }
     }
 }
+
+//if (footprints == false) {
+  //  for (i = 1; i &lt; 10; i++) {
+   //     temp = instance_position(x-16, y+i*8, obj_test)
+ //       if (temp.image_alpha &gt; 0.5)
+ //           footprints = true
+ //   }
+//}
+
+//if (footprints == true) {
+//    for (i = 1; i &lt; 10; i++) {
+//        temp = instance_position(x-16, y+i*8, obj_test)
+//        temp.image_alpha += 0.01
+//        temp = instance_position(x+16, y+i*8, obj_test)
+//        temp.image_alpha += 0.01
+//    }
+ //   temp = instance_position(x, y+28, obj_test);
+ //   temp.image_alpha += 0.5;
+//    show_debug_message("X distance: " +  string(x))
+//    show_debug_message("Y distance: " +  string(y))
+//}
 </string>
           </argument>
         </arguments>
