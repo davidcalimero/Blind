@@ -46,6 +46,7 @@ isPlayerNearby = false      // se o jogador esta perto
 isMovingRight = true        // se o jogador esta a ir para a direita
 isMovingUp = true           // se o jogador esta a ir para cima
 stepsToNextAttack = 0       // steps para o proximo ataque
+footprints = false
 
 emitter_impact = audio_emitter_create()
 emitter_buzz = audio_emitter_create()
@@ -55,6 +56,54 @@ audio_emitter_falloff(emitter_buzz,100,100,5)
 
 audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>c</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>a</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>visible</string>
           </argument>
         </arguments>
       </action>
@@ -121,7 +170,7 @@ if(isPlayerNearby) {
         } else {
             if(x==PlayerObject.x) { 
                 audio_play_sound_on(emitter_impact,snd_impact1,false,1)
-                PlayerObject.vidas -= 1
+                PlayerObject.health -= 25
             }
             isMovingUp = true
             stepsToNextAttack = StepsToNextAttack
@@ -142,6 +191,57 @@ if(isPlayerNearby) {
         if(y&lt;MinY) { y += VelocityY_Calm }
         else { isMovingUp = true }
     }
+}
+
+//if (footprints == false) {
+  //  for (i = 1; i &lt; 10; i++) {
+   //     temp = instance_position(x-16, y+i*8, obj_test)
+ //       if (temp.image_alpha &gt; 0.5)
+ //           footprints = true
+ //   }
+//}
+
+//if (footprints == true) {
+//    for (i = 1; i &lt; 10; i++) {
+//        temp = instance_position(x-16, y+i*8, obj_test)
+//        temp.image_alpha += 0.01
+//        temp = instance_position(x+16, y+i*8, obj_test)
+//        temp.image_alpha += 0.01
+//    }
+ //   temp = instance_position(x, y+28, obj_test);
+ //   temp.image_alpha += 0.5;
+//    show_debug_message("X distance: " +  string(x))
+//    show_debug_message("Y distance: " +  string(y))
+//}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(place_meeting(x, y, obj_circle)){
+    if(c == 0){
+        a = visible;
+    }
+    visible = 1;
+    c = 1;
+} else {
+    c = 0;
+    visible = a;
 }
 </string>
           </argument>
@@ -190,6 +290,7 @@ if(isPlayerNearby) {
           <argument>
             <kind>1</kind>
             <string>visible = true;
+a = true;
 </string>
           </argument>
         </arguments>

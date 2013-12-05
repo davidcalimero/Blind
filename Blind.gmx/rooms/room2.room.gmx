@@ -802,6 +802,7 @@
     <instance objName="obj_test" x="960" y="280" name="inst_84A28A37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="968" y="280" name="inst_2E4ECC56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="976" y="280" name="inst_327A6FDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_controller" x="8" y="0" name="inst_86F0BA01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
