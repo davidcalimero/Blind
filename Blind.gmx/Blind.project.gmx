@@ -5,16 +5,18 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\snd_monster2_bark1</sound>
-    <sound>sound\snd_monster2_bark2</sound>
-    <sound>sound\snd_monster2_roar1</sound>
-    <sound>sound\snd_monster2_roar2</sound>
     <sound>sound\snd_bee_buzz1</sound>
     <sound>sound\snd_impact1</sound>
     <sound>sound\snd_rock</sound>
     <sound>sound\snd_pickup1</sound>
     <sound>sound\snd_splatter1</sound>
     <sound>sound\snd_rocksfalling</sound>
+    <sound>sound\snd_monster2_roar4</sound>
+    <sound>sound\snd_monster2_roar5</sound>
+    <sound>sound\snd_monster2_bark1</sound>
+    <sound>sound\snd_monster2_bark2</sound>
+    <sound>sound\snd_insect_scream1</sound>
+    <sound>sound\snd_insect_scream2</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>

@@ -11,246 +11,6 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// 30 steps = 1 segundo
-PlayerObject = obj_character// objecto do jogador
-StepsToNextAttack = 20      // ataca a cada 20 steps
-ViewRadius = 100            // raio de visao para detectar o jogador
-VerticalPerception = 20     // capacidade de detectar o jogador verticalmente
-NoiseRadius = 200           // raio a que pode ser ouvido pelo jogador
-VelocityX_Angry = 3         // velocidade horizontal (zangado)
-VelocityX_Calm = 2          // velocidade horizontal (calmo)
-VelocityY_Angry = 5         // velocidade vertical (zangado)
-VelocityY_Calm = 1          // velocidade vertical (calmo)
-SoundGain_Impact = 1.0      // multiplicador de volume para o som de impacto
-SoundGain_Buzz = 1.0        // multiplicador de volume para o som do zumbido
-MaxX = x + 170              // limite horizontal direito
-MinX = x - 165              // limite horizontal esquerdo
-MaxY = y - 15               // limite vertical superior
-MinY = y - 5                // limite vertical inferior
-y = y - 10                  // actualizacao da posicao vertical inicial
-isPlayerNearby = false      // se o jogador esta perto
-isMovingRight = true        // se o jogador esta a ir para a direita
-isMovingUp = true           // se o jogador esta a ir para cima
-stepsToNextAttack = 0       // steps para o proximo ataque
-footprints = false
-
-emitter_impact = audio_emitter_create()
-emitter_buzz = audio_emitter_create()
-audio_emitter_gain(emitter_impact,0.0)
-audio_emitter_gain(emitter_buzz,0.0)
-audio_emitter_falloff(emitter_buzz,100,100,5)
-
-audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>c</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>a</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>visible</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>distanceToPlayer = distance_to_object(PlayerObject)
-if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { isPlayerNearby = true } 
-else { isPlayerNearby = false }
-
-if(distanceToPlayer&lt;NoiseRadius) { 
-    audio_emitter_gain(emitter_buzz,SoundGain_Buzz)
-    audio_emitter_gain(emitter_impact,SoundGain_Impact)
-}
-else {
-    audio_emitter_gain(emitter_buzz,0)
-    audio_emitter_gain(emitter_impact,0)
-}
-
-if(isMovingRight) { sprite_index = spr_flyingr }
-else { sprite_index = spr_flyingl }
-
-audio_emitter_position(emitter_buzz,PlayerObject.x-x,PlayerObject.y-y,0)
-audio_emitter_position(emitter_impact,PlayerObject.x-x,PlayerObject.y-y,0)
-
-if(isPlayerNearby) {
-    if(PlayerObject.x&gt;x) {
-        if(abs(PlayerObject.x-x)&lt;3) { x = PlayerObject.x } 
-        else { 
-            x += VelocityX_Angry
-            isMovingRight = true
-        }
-    } else {
-        if(abs(PlayerObject.x-x)&lt;3) { x = PlayerObject.x }
-        else {
-            x -= VelocityX_Angry
-            isMovingRight = false
-        }
-    }
-    if(x&gt;MaxX) { x = MaxX }
-    if(x&lt;MinX) { x = MinX }
-    if(isMovingUp) {
-        if(y&gt;MaxY) { y -= VelocityY_Angry }
-        else { isMovingUp = false }
-    } else {
-        if(y&lt;MinY &amp;&amp; x==PlayerObject.x) { 
-            if(stepsToNextAttack==0) { y += VelocityY_Angry }
-            else { stepsToNextAttack -= 1 }
-        } else {
-            if(x==PlayerObject.x) { 
-                audio_play_sound_on(emitter_impact,snd_impact1,false,1)
-                PlayerObject.health -= 25
-            }
-            isMovingUp = true
-            stepsToNextAttack = StepsToNextAttack
-        }
-    }
-} else {
-    if(isMovingRight) {
-        if(x&lt;MaxX) { x += VelocityX_Calm } 
-        else { isMovingRight = false }
-    } else {
-        if(x&gt;MinX) { x -= VelocityX_Calm } 
-        else { isMovingRight = true }
-    }
-    if(isMovingUp) {
-        if(y&gt;MaxY) { y -= VelocityY_Calm }
-        else { isMovingUp = false }
-    } else {
-        if(y&lt;MinY) { y += VelocityY_Calm }
-        else { isMovingUp = true }
-    }
-}
-
-//if (footprints == false) {
-  //  for (i = 1; i &lt; 10; i++) {
-   //     temp = instance_position(x-16, y+i*8, obj_test)
- //       if (temp.image_alpha &gt; 0.5)
- //           footprints = true
- //   }
-//}
-
-//if (footprints == true) {
-//    for (i = 1; i &lt; 10; i++) {
-//        temp = instance_position(x-16, y+i*8, obj_test)
-//        temp.image_alpha += 0.01
-//        temp = instance_position(x+16, y+i*8, obj_test)
-//        temp.image_alpha += 0.01
-//    }
- //   temp = instance_position(x, y+28, obj_test);
- //   temp.image_alpha += 0.5;
-//    show_debug_message("X distance: " +  string(x))
-//    show_debug_message("Y distance: " +  string(y))
-//}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(place_meeting(x, y, obj_circle)){
-    if(c == 0){
-        a = visible;
-    }
-    visible = 1;
-    c = 1;
-} else {
-    c = 0;
-    visible = a;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="object12">
-      <action>
-        <libid>1</libid>
         <id>543</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -289,8 +49,209 @@ if(isPlayerNearby) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible = true;
-a = true;
+            <string>PlayerObject = obj_character// objecto do jogador
+ViewRadius = 100            // raio de visao para detectar o jogador
+VerticalPerception = 20     // capacidade de detectar o jogador verticalmente
+NoiseRadius = 200           // raio a que pode ser ouvido pelo jogador
+VelocityX_Angry = 3         // velocidade horizontal (zangado)
+VelocityX_Calm = 2          // velocidade horizontal (calmo)
+VelocityY_Angry = 5         // velocidade vertical (zangado)
+VelocityY_Calm = 1          // velocidade vertical (calmo)
+StepsToNextAttack = 20      // ataca a cada X steps
+StepsToNextSound = 60       // faz um som a cada X steps
+SoundGain_Impact = 1.0      // multiplicador de volume para o som de impacto
+SoundGain_Buzz = 1.0        // multiplicador de volume para o som do zumbido
+SoundGain_Scream = 0.5      // multiplicador de volume para o som do grito
+MaxY = y                    // limite vertical superior
+MinY = y - 15               // limite vertical inferior
+visible = false             // invisivel ate ser pintado
+stepsToNextAttack = StepsToNextAttack
+stepsToNextSound = StepsToNextSound
+isPlayerNearby = false      // se o jogador esta perto
+isMovingRight = true        // se o monstro esta a ir para a direita
+isMovingUp = true           // se o monstro esta a ir para cima
+isPainted = false           // se ja tiver sido pintado
+
+emitter_impact = audio_emitter_create()
+emitter_buzz = audio_emitter_create()
+emitter_scream = audio_emitter_create()
+audio_emitter_gain(emitter_impact,0.0)
+audio_emitter_gain(emitter_buzz,0.0)
+audio_emitter_gain(emitter_scream,0.0)
+audio_emitter_falloff(emitter_buzz,100,100,5)
+
+audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
+
+//footprints = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>distanceToPlayer = distance_to_object(PlayerObject)
+audio_emitter_position(emitter_buzz,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_impact,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_scream,PlayerObject.x-x,PlayerObject.y-y,0)
+
+if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { 
+    if(!isPlayerNearby) { // se no step passado nao detectava o jogador e agora detecta
+        switch(floor(random(2))) {
+            case 0: audio_play_sound_on(emitter_scream,snd_insect_scream1,false,1) break
+            case 1: audio_play_sound_on(emitter_scream,snd_insect_scream2,false,1) break
+        }
+        stepsToNextSound = StepsToNextSound
+    }
+    isPlayerNearby = true
+} else { isPlayerNearby = false }
+
+if(isMovingRight) { sprite_index = spr_flyingr }
+else { sprite_index = spr_flyingl }
+
+if(distanceToPlayer&lt;NoiseRadius) { 
+    audio_emitter_gain(emitter_buzz,SoundGain_Buzz)
+    audio_emitter_gain(emitter_impact,SoundGain_Impact)
+    audio_emitter_gain(emitter_scream,SoundGain_Scream)
+} else {
+    audio_emitter_gain(emitter_buzz,0)
+    audio_emitter_gain(emitter_impact,0)
+    audio_emitter_gain(emitter_scream,0)
+}
+
+if(isPainted) {
+    visible = true
+} else {
+    if(place_meeting(x, y, obj_circle)) { visible = true }
+    else { visible = false }
+}
+
+if(isPlayerNearby) {
+    if(abs(PlayerObject.x-x)&lt;VelocityX_Angry) { x = PlayerObject.x } //se estiver ao alcance do jogador
+    else if(PlayerObject.x&gt;x) { //se estiver a direita do jogador (fora do alcance)
+        x += VelocityX_Angry
+        isMovingRight = true
+    } else { //se estiver a esquerda do jogador (fora do alcance)
+        x -= VelocityX_Angry
+        isMovingRight = false
+    }
+    if(isMovingUp) {
+        if(y&gt;MinY) { y -= VelocityY_Angry }
+        else { isMovingUp = false }
+    } else {
+        if(y&lt;=MinY &amp;&amp; x==PlayerObject.x) { 
+            if(stepsToNextAttack==0) { y += VelocityY_Angry }
+            else { stepsToNextAttack -= 1 }
+        } else {
+            if(x==PlayerObject.x) { 
+                audio_play_sound_on(emitter_impact,snd_impact1,false,1)
+                PlayerObject.health -= 25
+            }
+            isMovingUp = true
+            stepsToNextAttack = StepsToNextAttack
+        }
+    }
+    if(stepsToNextSound == 0) {
+        switch(floor(random(2))) {
+            case 0: audio_play_sound_on(emitter_scream,snd_insect_scream1,false,1) break
+            case 1: audio_play_sound_on(emitter_scream,snd_insect_scream2,false,1) break
+        }
+        stepsToNextSound = StepsToNextSound
+    } else { stepsToNextSound -= 1 }
+} else {
+    if(isMovingRight) { x += VelocityX_Calm }
+    else { x -= VelocityX_Calm }
+    if(isMovingUp) {
+        if(y&gt;MinY) { y -= VelocityY_Calm }
+        else { isMovingUp = false }
+    } else {
+        if(y&lt;MaxY) { y += VelocityY_Calm }
+        else { isMovingUp = true }
+    }
+}
+
+/*
+if (footprints == false) {
+    for (i = 1; i &lt; 10; i++) {
+        temp = instance_position(x-16, y+i*8, obj_test)
+        if (temp.image_alpha &gt; 0.5) footprints = true
+    }
+}
+
+if (footprints == true) {
+    for (i = 1; i &lt; 10; i++) {
+        temp = instance_position(x-16, y+i*8, obj_test)
+        temp.image_alpha += 0.01
+        temp = instance_position(x+16, y+i*8, obj_test)
+        temp.image_alpha += 0.01
+    }
+    temp = instance_position(x, y+28, obj_test);
+    temp.image_alpha += 0.5;
+    show_debug_message("X distance: " +  string(x))
+    show_debug_message("Y distance: " +  string(y))
+}
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_test">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isMovingRight = !isMovingRight
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isPainted = true
 </string>
           </argument>
         </arguments>

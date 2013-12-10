@@ -2,7 +2,7 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>C:\Users\Nixo\Desktop\Blind.gmx\\sound\audio\snd_monster2_roar1.wav</origname>
+  <origname>snd_monster2_roar4.wav</origname>
   <effects>0</effects>
   <volume>
     <volume>1</volume>
@@ -21,7 +21,7 @@
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
-  <data>snd_monster2_roar1.wav</data>
+  <data>snd_monster2_roar4.wav</data>
   <compressed>0</compressed>
   <streamed>0</streamed>
   <uncompressOnLoad>0</uncompressOnLoad>
