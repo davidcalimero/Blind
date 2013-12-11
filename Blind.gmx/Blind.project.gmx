@@ -17,6 +17,8 @@
     <sound>sound\snd_monster2_bark2</sound>
     <sound>sound\snd_insect_scream1</sound>
     <sound>sound\snd_insect_scream2</sound>
+    <sound>sound\snd_insect_death</sound>
+    <sound>sound\snd_insect_hit</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>

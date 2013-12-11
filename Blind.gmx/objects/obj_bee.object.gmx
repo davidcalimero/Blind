@@ -62,9 +62,12 @@ StepsToNextSound = 60       // faz um som a cada X steps
 SoundGain_Impact = 1.0      // multiplicador de volume para o som de impacto
 SoundGain_Buzz = 1.0        // multiplicador de volume para o som do zumbido
 SoundGain_Scream = 0.5      // multiplicador de volume para o som do grito
+SoundGain_Hit = 0.5         // multiplicador de volume para o som de atingido
+SoundGain_Death = 0.5       // multiplicador de volume para o som da morte
 MaxY = y                    // limite vertical superior
 MinY = y - 15               // limite vertical inferior
 visible = false             // invisivel ate ser pintado
+hitsToDie = 5               // pedradas ate morrer
 stepsToNextAttack = StepsToNextAttack
 stepsToNextSound = StepsToNextSound
 isPlayerNearby = false      // se o jogador esta perto
@@ -75,9 +78,13 @@ isPainted = false           // se ja tiver sido pintado
 emitter_impact = audio_emitter_create()
 emitter_buzz = audio_emitter_create()
 emitter_scream = audio_emitter_create()
+emitter_hit = audio_emitter_create()
+emitter_death = audio_emitter_create()
 audio_emitter_gain(emitter_impact,0.0)
 audio_emitter_gain(emitter_buzz,0.0)
 audio_emitter_gain(emitter_scream,0.0)
+audio_emitter_gain(emitter_hit,0.0)
+audio_emitter_gain(emitter_death,0.0)
 audio_emitter_falloff(emitter_buzz,100,100,5)
 
 audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
@@ -109,6 +116,8 @@ audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
 audio_emitter_position(emitter_buzz,PlayerObject.x-x,PlayerObject.y-y,0)
 audio_emitter_position(emitter_impact,PlayerObject.x-x,PlayerObject.y-y,0)
 audio_emitter_position(emitter_scream,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_hit,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_death,PlayerObject.x-x,PlayerObject.y-y,0)
 
 if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { 
     if(!isPlayerNearby) { // se no step passado nao detectava o jogador e agora detecta
@@ -128,10 +137,14 @@ if(distanceToPlayer&lt;NoiseRadius) {
     audio_emitter_gain(emitter_buzz,SoundGain_Buzz)
     audio_emitter_gain(emitter_impact,SoundGain_Impact)
     audio_emitter_gain(emitter_scream,SoundGain_Scream)
+    audio_emitter_gain(emitter_hit,SoundGain_Hit)
+    audio_emitter_gain(emitter_death,SoundGain_Death)
 } else {
     audio_emitter_gain(emitter_buzz,0)
     audio_emitter_gain(emitter_impact,0)
     audio_emitter_gain(emitter_scream,0)
+    audio_emitter_gain(emitter_hit,0)
+    audio_emitter_gain(emitter_death,0)
 }
 
 if(isPainted) {
@@ -206,6 +219,38 @@ if (footprints == true) {
     show_debug_message("Y distance: " +  string(y))
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_rock">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(hitsToDie==1) {
+    audio_play_sound_on(emitter_death,snd_insect_death,false,1)
+    audio_emitter_free(emitter_buzz)
+    instance_destroy()
+} else {
+    audio_play_sound_on(emitter_hit,snd_insect_hit,false,1)
+    stepsToNextSound = StepsToNextSound
+    stepsToNextAttack = StepsToNextAttack
+    hitsToDie -= 1
+}
 </string>
           </argument>
         </arguments>
