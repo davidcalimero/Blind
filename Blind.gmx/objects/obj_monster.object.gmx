@@ -60,9 +60,12 @@ StepsToNextSound = 50       // faz um som a cada X steps
 SoundGain_Impact = 1.0      // multiplicador de volume para o som de impact
 SoundGain_Bark = 1.0        // multiplicador de volume para o som do bark
 SoundGain_Roar = 1.0        // multiplicador de volume para o som do roar
+SoundGain_Hit = 1.0         // multiplicador de volume para o som de atingir
+SoundGain_Death = 1.0       // multiplicador de volume para o som de morrer
 visible = false             // invisivel ate ser pintado
 stepsToNextAttack = StepsToNextAttack
 stepsToNextSound = StepsToNextSound
+hitsToDie = 8               // pedradas ate morrer
 isPlayerNearby = false      // se o jogador esta perto
 isMovingRight = true        // se o monstro esta a ir para a direita
 isPainted = false           // se ja tiver sido pintado
@@ -70,9 +73,13 @@ isPainted = false           // se ja tiver sido pintado
 emitter_impact = audio_emitter_create()
 emitter_bark = audio_emitter_create()
 emitter_roar = audio_emitter_create()
+emitter_hit = audio_emitter_create()
+emitter_death = audio_emitter_create()
 audio_emitter_gain(emitter_impact,0.0)
 audio_emitter_gain(emitter_bark,0.0)
 audio_emitter_gain(emitter_roar,0.0)
+audio_emitter_gain(emitter_hit,0.0)
+audio_emitter_gain(emitter_death,0.0)
 audio_emitter_falloff(emitter_bark,100,100,5)
 audio_emitter_falloff(emitter_roar,100,100,5)
 
@@ -103,6 +110,8 @@ audio_emitter_falloff(emitter_roar,100,100,5)
 audio_emitter_position(emitter_impact,PlayerObject.x-x,PlayerObject.y-y,0)
 audio_emitter_position(emitter_bark,PlayerObject.x-x,PlayerObject.y-y,0)
 audio_emitter_position(emitter_roar,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_hit,PlayerObject.x-x,PlayerObject.y-y,0)
+audio_emitter_position(emitter_death,PlayerObject.x-x,PlayerObject.y-y,0)
 
 if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { 
     if(!isPlayerNearby) { // se no step passado nao detectava o jogador e agora detecta
@@ -122,10 +131,14 @@ if(distanceToPlayer&lt;NoiseRadius) {
     audio_emitter_gain(emitter_impact,SoundGain_Impact)
     audio_emitter_gain(emitter_bark,SoundGain_Bark)
     audio_emitter_gain(emitter_roar,SoundGain_Roar)
+    audio_emitter_gain(emitter_hit,SoundGain_Hit)
+    audio_emitter_gain(emitter_death,SoundGain_Death)
 } else {
     audio_emitter_gain(emitter_impact,0)
     audio_emitter_gain(emitter_bark,0)
     audio_emitter_gain(emitter_roar,0)
+    audio_emitter_gain(emitter_hit,0)
+    audio_emitter_gain(emitter_death,0)
 }
 
 if(stepsToNextSound==0) {
@@ -192,6 +205,37 @@ if (footprints == true) {
     show_debug_message("Y distance: " +  string(y))
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_rock">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(hitsToDie==1) {
+    audio_play_sound_on(emitter_death,snd_monster2_death,false,1)
+    instance_destroy()
+} else {
+    audio_play_sound_on(emitter_hit,snd_monster2_hit,false,1)
+    stepsToNextSound = StepsToNextSound
+    stepsToNextAttack = StepsToNextAttack
+    hitsToDie -= 1
+}
 </string>
           </argument>
         </arguments>
