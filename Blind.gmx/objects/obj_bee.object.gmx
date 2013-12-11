@@ -59,6 +59,7 @@ VelocityY_Angry = 5         // velocidade vertical (zangado)
 VelocityY_Calm = 1          // velocidade vertical (calmo)
 StepsToNextAttack = 20      // ataca a cada X steps
 StepsToNextSound = 60       // faz um som a cada X steps
+StepsStaggered = 20         // steps que fica atordoado
 SoundGain_Impact = 1.0      // multiplicador de volume para o som de impacto
 SoundGain_Buzz = 1.0        // multiplicador de volume para o som do zumbido
 SoundGain_Scream = 0.5      // multiplicador de volume para o som do grito
@@ -70,6 +71,7 @@ visible = false             // invisivel ate ser pintado
 hitsToDie = 5               // pedradas ate morrer
 stepsToNextAttack = StepsToNextAttack
 stepsToNextSound = StepsToNextSound
+stepsToEndStagger = 0       // steps ate acabar o stagger
 isPlayerNearby = false      // se o jogador esta perto
 isMovingRight = true        // se o monstro esta a ir para a direita
 isMovingUp = true           // se o monstro esta a ir para cima
@@ -155,7 +157,8 @@ if(isPainted) {
 }
 
 if(isPlayerNearby) {
-    if(abs(PlayerObject.x-x)&lt;VelocityX_Angry) { x = PlayerObject.x } //se estiver ao alcance do jogador
+    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se ainda estiver atordoado
+    else if(abs(PlayerObject.x-x)&lt;VelocityX_Angry) { x = PlayerObject.x } //se estiver ao alcance do jogador
     else if(PlayerObject.x&gt;x) { //se estiver a direita do jogador (fora do alcance)
         x += VelocityX_Angry
         isMovingRight = true
@@ -187,7 +190,8 @@ if(isPlayerNearby) {
         stepsToNextSound = StepsToNextSound
     } else { stepsToNextSound -= 1 }
 } else {
-    if(isMovingRight) { x += VelocityX_Calm }
+    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se ainda estiver atordoado
+    else if(isMovingRight) { x += VelocityX_Calm }
     else { x -= VelocityX_Calm }
     if(isMovingUp) {
         if(y&gt;MinY) { y -= VelocityY_Calm }
@@ -249,6 +253,7 @@ if (footprints == true) {
     audio_play_sound_on(emitter_hit,snd_insect_hit,false,1)
     stepsToNextSound = StepsToNextSound
     stepsToNextAttack = StepsToNextAttack
+    stepsToEndStagger = StepsStaggered
     hitsToDie -= 1
 }
 </string>

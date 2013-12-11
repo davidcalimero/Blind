@@ -21,6 +21,9 @@
     <sound>sound\snd_insect_hit</sound>
     <sound>sound\snd_monster2_death</sound>
     <sound>sound\snd_monster2_hit</sound>
+    <sound>sound\snd_heartbeat1</sound>
+    <sound>sound\snd_heartbeat2</sound>
+    <sound>sound\snd_heartbeat3</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>
