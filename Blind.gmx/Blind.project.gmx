@@ -24,6 +24,7 @@
     <sound>sound\snd_heartbeat1</sound>
     <sound>sound\snd_heartbeat2</sound>
     <sound>sound\snd_heartbeat3</sound>
+    <sound>sound\snd_tictoc</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>
@@ -48,6 +49,7 @@
     <sprite>sprites\spr_smoke</sprite>
     <sprite>sprites\spr_circle</sprite>
     <sprite>sprites\spr_dir</sprite>
+    <sprite>sprites\spr_tempclock</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -77,6 +79,7 @@
     <object>objects\obj_rocksfalling</object>
     <object>objects\obj_monsterwall</object>
     <object>objects\obj_gameending</object>
+    <object>objects\obj_clock</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_tutorial</room>
