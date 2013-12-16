@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_circle</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -39,6 +39,10 @@ if(image_xscale &gt; raio)
     image_xscale = 1/sprite_width;
 if(image_yscale &gt; raio)
     image_yscale = 1/sprite_height;
+    
+image_xscale = 0.4;
+image_yscale = 0.4;
+    
 
 </string>
           </argument>
