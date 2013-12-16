@@ -77,6 +77,8 @@
     <object>objects\obj_rocksfalling</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_1</room>
+    <room>rooms\rm_tutorial</room>
     <room>rooms\room2</room>
   </rooms>
   <help>
