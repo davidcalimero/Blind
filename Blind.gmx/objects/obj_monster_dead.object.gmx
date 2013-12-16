@@ -259,8 +259,7 @@ if (gamepad_is_connected(0)){
         right = true;
     }
     
-    show_debug_message(string(gamepad_axis_value(0, gp_axisrv)));
-    if (gamepad_axis_value(0, gp_axisrh) == 0 &amp;&amp; gamepad_axis_value(0, gp_axisrv) == 0)
+    if (abs(gamepad_axis_value(0, gp_axisrh)) &lt; 0.5 &amp;&amp; abs(gamepad_axis_value(0, gp_axisrv)) &lt; 0.5)
         visible = false;
     else 
         visible = true;
