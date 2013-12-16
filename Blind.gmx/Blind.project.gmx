@@ -76,10 +76,11 @@
     <object>objects\obj_circle</object>
     <object>objects\obj_rocksfalling</object>
     <object>objects\obj_monsterwall</object>
+    <object>objects\obj_gameending</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_1</room>
     <room>rooms\rm_tutorial</room>
+    <room>rooms\rm_1</room>
     <room>rooms\room2</room>
   </rooms>
   <help>

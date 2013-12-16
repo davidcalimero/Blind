@@ -201,6 +201,38 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SoundGain_Heartbeat_High = 1.0
+SoundGain_Heartbeat_Medium = 7.0
+SoundGain_Heartbeat_Low = 5.0
+emitter_heartbeat_high = audio_emitter_create()
+emitter_heartbeat_medium = audio_emitter_create()
+emitter_heartbeat_low = audio_emitter_create()
+audio_emitter_gain(emitter_heartbeat_high,0.0)
+audio_emitter_gain(emitter_heartbeat_medium,0.0)
+audio_emitter_gain(emitter_heartbeat_low,0.0)
+audio_play_sound_on(emitter_heartbeat_high,snd_heartbeat3,true,1)
+audio_play_sound_on(emitter_heartbeat_medium,snd_heartbeat2,true,1)
+audio_play_sound_on(emitter_heartbeat_low,snd_heartbeat1,true,1)
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -736,6 +768,43 @@ if (gamepad_is_connected(0)){
           <argument>
             <kind>0</kind>
             <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(health&lt;=75 &amp;&amp; health &gt; 50) {
+    audio_emitter_gain(emitter_heartbeat_high,0.0)
+    audio_emitter_gain(emitter_heartbeat_medium,0.0)
+    audio_emitter_gain(emitter_heartbeat_low,SoundGain_Heartbeat_Low)
+} else if(health&lt;=50 &amp;&amp; health &gt; 25) {
+    audio_emitter_gain(emitter_heartbeat_high,0.0)
+    audio_emitter_gain(emitter_heartbeat_medium,SoundGain_Heartbeat_Medium)
+    audio_emitter_gain(emitter_heartbeat_low,0.0)
+} else if(health&lt;=25 &amp;&amp; health &gt; 0) {
+    audio_emitter_gain(emitter_heartbeat_high,SoundGain_Heartbeat_High)
+    audio_emitter_gain(emitter_heartbeat_medium,0.0)
+    audio_emitter_gain(emitter_heartbeat_low,0.0)
+} else {
+    audio_emitter_gain(emitter_heartbeat_high,0.0)
+    audio_emitter_gain(emitter_heartbeat_medium,0.0)
+    audio_emitter_gain(emitter_heartbeat_low,0.0)
+}
+</string>
           </argument>
         </arguments>
       </action>

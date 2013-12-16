@@ -528,10 +528,8 @@
     <instance objName="obj_test" x="288" y="312" name="inst_06D95611" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="296" y="312" name="inst_CB379623" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="304" y="312" name="inst_2DD19A4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_levelexit" x="280" y="264" name="inst_8FAA1ABF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bee" x="200" y="296" name="inst_FBCF4B10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mushroom" x="264" y="232" name="inst_8E5E8598" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mushroom" x="192" y="232" name="inst_82357748" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushroom" x="184" y="232" name="inst_82357748" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="280" y="296" name="inst_52487906" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="280" y="304" name="inst_ECF1943A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="288" y="296" name="inst_ABA9F388" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -540,6 +538,10 @@
     <instance objName="obj_test" x="296" y="304" name="inst_4D5CC484" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="304" y="296" name="inst_F8AB2B53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_test" x="304" y="304" name="inst_31AF01E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_test" x="168" y="248" name="inst_4BF442AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mushroom" x="224" y="312" name="inst_90EF2274" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bee" x="168" y="296" name="inst_7DD5039E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gameending" x="280" y="264" name="inst_C46BC117" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
