@@ -145,46 +145,6 @@
       </action>
       <action>
         <libid>1</libid>
-        <id>723</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_draw_health</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>10</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>13</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>150</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>30</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>2</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -200,11 +160,15 @@
           <argument>
             <kind>1</kind>
             <string>if (game_over == 0) {
-    draw_sprite_stretched(spr_static_materia_x, -1, 160, 0, 30, 30)
+    draw_sprite_stretched(spr_static_materia_x, -1, 20, 10, 30, 30)
+    draw_sprite_stretched(spr_tempclock, -1, 70, 10, 30, 30)
+    
     draw_set_color(c_white)
     draw_set_font(ui_number)
     draw_set_halign(fa_left)
-    draw_text(185, 16, string(obj_character.materia_x))
+ 
+    draw_text(45, 26, string(obj_character.materia_x))   
+    draw_text(95, 26, string(obj_character.clocks))
     
 } if (game_over == 1) {
     life = obj_character.health
