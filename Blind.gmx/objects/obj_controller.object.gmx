@@ -232,12 +232,12 @@
         draw_text(450, 300, string(clocks))
         draw_text(450, 350, string(life) + "%")
         draw_text(450, 400, string(enemies_destroyed))
-        draw_text(450, 450, string(points))
+    //    draw_text(450, 450, string(points))
     } else if (level == 2) {
         draw_text(450, 300, string(clocks))
         draw_text(450, 350, string(life) + "%")
         draw_text(450, 400, string(enemies_destroyed))
-        draw_text(450, 450, string(points))    
+      //  draw_text(450, 450, string(points))    
     }
         
     draw_set_font(ui_number)    
@@ -247,10 +247,17 @@
     if (level == 2)
         draw_text(750, 550, 'You have reached the end of the Blind demo. Contratulations!')
 
-        
- //   if (life == 100 &amp;&amp; enemies_destroyed ==) 
-  //      draw_sprite (spr_star, 0, 550, 450)
-        
+
+    if (life == 100 &amp;&amp; enemies_destroyed &gt; 0 &amp;&amp; clocks &gt; 0) {
+        draw_sprite (spr_star, 0, 460, 450)
+        draw_sprite (spr_star, 0, 510, 450)
+        draw_sprite (spr_star, 0, 560, 450)
+    } else if ((life == 100 &amp;&amp; enemies_destroyed &gt; 0) || (life == 100 &amp;&amp; clocks &gt; 0) || (enemies_destroyed &gt; 0 &amp;&amp; clocks &gt; 0)) {
+        draw_sprite (spr_star, 0, 460, 450)
+        draw_sprite (spr_star, 0, 510, 450)
+    } else if (life == 100 || enemies_destroyed &gt; 0 || clocks &gt; 0) {
+        draw_sprite (spr_star, 0, 460, 450)
+    }
 
 
 } 
