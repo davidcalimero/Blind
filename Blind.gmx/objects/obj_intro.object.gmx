@@ -127,12 +127,12 @@ obj_character.can_start = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>str1 = "?: Benvindo Jack!";
+            <string>str1 = "?: Bem-vindo Jack!";
 str2 = "Jack: Onde estou?";
 str3 = "?: Preso no teu próprio sonho... #   E só há uma maneira de acordares dele.";
 str4 = "Jack: Como?";
 str5 = "?: Terás de enfrentar os seus desafios.";
-str6 = "?: Como podes verificar o teu sonho está compleamente escuro.. #   Vais portanto precisar de encontrar outras formas de o explorares.#   Boa sorte!";
+str6 = "?: Como podes ver, o teu sonho está completamente escuro.. #   Vais precisar de encontrar outras formas de o explorares.#   Boa sorte!";
 
 draw_set_color(c_white)
 
