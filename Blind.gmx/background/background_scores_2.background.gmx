@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>550</width>
-  <height>344</height>
-  <data>images\background_scores.png</data>
+  <width>506</width>
+  <height>220</height>
+  <data>images\background_scores_2.png</data>
 </background>

@@ -52,7 +52,7 @@ audio_play_sound_on(emitter_tictoc,snd_tictoc,true,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_emitter_gain(emitter_tictoc,1.0)
+            <string>audio_emitter_gain(emitter_tictoc,2.5)
 
 if(place_meeting(x, y, obj_circle)) { visible = true }
 else { visible = false }
