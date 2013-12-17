@@ -290,6 +290,7 @@ isMovingRight = !isMovingRight
             <kind>1</kind>
             <string>if(hitsToDie==1) {
     audio_play_sound_on(emitter_death,snd_monster2_death,false,1)
+    obj_character.enemies_destroyed++
     instance_destroy()
 } else {
     audio_play_sound_on(emitter_hit,snd_monster2_hit,false,1)
