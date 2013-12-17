@@ -1134,6 +1134,8 @@
     <instance objName="obj_catchable_materia_x" x="464" y="240" name="inst_B46D413D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="432" y="240" name="inst_6877BCF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="664" y="272" name="inst_17AD2AC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_rocksfalling" x="544" y="288" name="inst_E0D0C329" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_rocksfalling" x="32" y="128" name="inst_33AEB3A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
