@@ -61,6 +61,26 @@
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>game_over == 0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>723</id>
         <kind>0</kind>
         <userelative>-1</userelative>
@@ -128,19 +148,20 @@
     points = 0
     points += life*10
     draw_set_color(c_white)
-    draw_set_font(ui_number)
+    draw_set_font(scores_font)
     draw_background(background_scores, 130, 10);
     draw_set_halign(fa_right)
-    draw_text(400, 250, 'Items Collected: ')
-    draw_text(400, 300, 'Life: ')
-    draw_text(400, 350, 'Enemies Destroyed: ')
-    draw_text(400, 400, 'Points: ')
+    draw_text(450, 250, 'Items Collected: ')
+    draw_text(450, 300, 'Life: ')
+    draw_text(450, 350, 'Enemies Destroyed: ')
+    draw_text(450, 400, 'Points: ')
 
     draw_set_halign(fa_left)
-    draw_text(400, 300, string(life) + "%")
-    draw_text(400, 400, string(points))
-    
-    draw_text(135, 450, 'Level Cleared. Press Enter To Continue.')
+    draw_text(450, 300, string(life) + "%")
+    draw_text(450, 400, string(points))
+
+    draw_set_font(ui_number)    
+    draw_text(165, 500, 'Level Cleared. Press Enter To Continue.')
 } 
 </string>
           </argument>
