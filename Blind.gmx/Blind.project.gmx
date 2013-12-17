@@ -25,6 +25,7 @@
     <sound>sound\snd_heartbeat2</sound>
     <sound>sound\snd_heartbeat3</sound>
     <sound>sound\snd_tictoc</sound>
+    <sound>sound\snd_rain1</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>
