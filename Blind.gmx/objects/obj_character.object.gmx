@@ -361,6 +361,7 @@ if (gamepad_is_connected(0)){
           <argument>
             <kind>1</kind>
             <string>audio_stop_all()
+gamepad_set_vibration(0,0,0);
 </string>
           </argument>
         </arguments>

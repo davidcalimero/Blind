@@ -90,6 +90,30 @@ audio_emitter_falloff(emitter_roar,100,100,5)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>timer</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -165,6 +189,10 @@ if(isPainted) {
     else { visible = false }
 }
 
+if(timer &gt; 0 &amp;&amp; gamepad_is_connected(0))
+    gamepad_set_vibration(0, 0, 0);
+timer = timer + 1;
+
 if(isPlayerNearby) {
     if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se estiver atordoado
     else if(abs(PlayerObject.x-x)&lt;VelocityX_Angry) { x = PlayerObject.x } //se estiver ao alcance do jogador
@@ -180,6 +208,10 @@ if(isPlayerNearby) {
             audio_play_sound_on(emitter_impact,snd_impact1,false,1)
             PlayerObject.health -= 50
             stepsToNextAttack = StepsToNextAttack
+            if (gamepad_is_connected(0)){
+                timer = -3;
+                gamepad_set_vibration(0, 3, 3);
+            }
         } else { stepsToNextAttack -= 1 }
     }
 } else {
