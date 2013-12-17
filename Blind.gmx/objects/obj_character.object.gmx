@@ -301,7 +301,7 @@ audio_play_sound_on(emitter_heartbeat_low,snd_heartbeat1,true,1)
           </argument>
           <argument>
             <kind>0</kind>
-            <string>false</string>
+            <string>true</string>
           </argument>
         </arguments>
       </action>

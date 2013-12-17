@@ -55,6 +55,8 @@ typed_letters3 = 0;
 typed_letters4 = 0;
 typed_letters5 = 0;
 typed_letters6 = 0;
+
+obj_character.can_start = false;
 </string>
           </argument>
         </arguments>
