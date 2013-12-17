@@ -99,10 +99,10 @@
     <object>objects\obj_tut_next</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_intro</room>
     <room>rooms\rm_tutorial</room>
     <room>rooms\rm_1</room>
     <room>rooms\room2</room>
+    <room>rooms\rm_intro</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
