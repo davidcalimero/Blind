@@ -27,6 +27,8 @@
     <sound>sound\snd_tictoc</sound>
     <sound>sound\snd_rain1</sound>
     <sound>sound\snd_wind1</sound>
+    <sound>sound\snd_dream1</sound>
+    <sound>sound\snd_wind2</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_death</sprite>

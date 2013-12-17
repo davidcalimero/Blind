@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>emitter_ambient = audio_emitter_create()
+audio_emitter_gain(emitter_ambient,0.5)
+audio_play_sound_on(emitter_ambient,snd_wind2,true,1)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
