@@ -57,6 +57,30 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>level</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -139,7 +163,9 @@
     draw_sprite_stretched(spr_mushroom, -1, 160, 0, 30, 30)
     draw_set_color(c_white)
     draw_set_font(ui_number)
+    draw_set_halign(fa_left)
     draw_text(185, 16, string(obj_character.materia_x))
+    
 } if (game_over == 1) {
     life = obj_character.health
     instance_deactivate_all(true)
@@ -151,17 +177,21 @@
     draw_set_font(scores_font)
     draw_background(background_scores, 130, 10);
     draw_set_halign(fa_right)
-    draw_text(450, 250, 'Items Collected: ')
-    draw_text(450, 300, 'Life: ')
-    draw_text(450, 350, 'Enemies Destroyed: ')
-    draw_text(450, 400, 'Points: ')
+    draw_text(450, 300, 'Items Collected: ')
+    draw_text(450, 350, 'Life: ')
+    draw_text(450, 400, 'Enemies Destroyed: ')
+    draw_text(450, 450, 'Points: ')
 
     draw_set_halign(fa_left)
-    draw_text(450, 300, string(life) + "%")
-    draw_text(450, 400, string(points))
+    draw_text(450, 350, string(life) + "%")
+    draw_text(450, 450, string(points))
 
     draw_set_font(ui_number)    
-    draw_text(165, 500, 'Level Cleared. Press Enter To Continue.')
+    draw_set_halign(fa_right)
+    if (level == 1)
+        draw_text(750, 550, 'Level Cleared. Press Enter To Continue.')
+    if (level == 2)
+        draw_text(750, 550, 'You have reached the end of the Blind demo. Contratulations!')
 } 
 </string>
           </argument>
@@ -190,6 +220,20 @@
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>
