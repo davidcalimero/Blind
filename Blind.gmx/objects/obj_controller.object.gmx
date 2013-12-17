@@ -125,26 +125,6 @@
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
-        <id>408</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>-1</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_if</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>game_over == 0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -188,19 +168,19 @@
     draw_text(450, 300, 'Items Collected: ')
     draw_text(450, 350, 'Life: ')
     draw_text(450, 400, 'Enemies Destroyed: ')
-    draw_text(450, 450, 'Points: ')
+    draw_text(450, 450, 'Final Score: ')
 
     draw_set_halign(fa_left)
     
     if (level == 1) {
-        draw_text(450, 300, string(clocks))
+        draw_text(450, 300, string(clocks) + '/4')
         draw_text(450, 350, string(life) + "%")
-        draw_text(450, 400, string(enemies_destroyed))
+        draw_text(450, 400, string(enemies_destroyed) + '/1')
     //    draw_text(450, 450, string(points))
     } else if (level == 2) {
-        draw_text(450, 300, string(clocks))
+        draw_text(450, 300, string(clocks) + '/4')
         draw_text(450, 350, string(life) + "%")
-        draw_text(450, 400, string(enemies_destroyed))
+        draw_text(450, 400, string(enemies_destroyed) + '/2')
       //  draw_text(450, 450, string(points))    
     }
         
