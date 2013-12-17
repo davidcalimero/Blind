@@ -200,7 +200,7 @@
           <argument>
             <kind>1</kind>
             <string>if (game_over == 0) {
-    draw_sprite_stretched(spr_mushroom, -1, 160, 0, 30, 30)
+    draw_sprite_stretched(spr_static_materia_x, -1, 160, 0, 30, 30)
     draw_set_color(c_white)
     draw_set_font(ui_number)
     draw_set_halign(fa_left)
