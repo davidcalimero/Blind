@@ -138,7 +138,7 @@ str5 = " Estás a ver essa matéria?# É a matériaX. Vai te ajudar a dar um pou
 str6 = " Do mesmo modo que a pedra, podes utilizar o botão R2# para disparares a matériaX";
 //show_debug_message(string(obj_character.x));
 //show_debug_message(string(typed_letters3));
-draw_set_color(c_blue)
+draw_set_color(c_ltgray)
 if(timer &gt; 4)
 {   
     if(obj_character.x &lt; 190){ 

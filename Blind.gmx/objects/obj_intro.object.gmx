@@ -132,7 +132,7 @@ str2 = "Jack: O que é isto? Onde estou?";
 str3 = "?: Não sei Jack... provavelmente preso no teu próprio sonho... [irónico]";
 str4 = "Jack: Quem és tu? Porque é que não vejo nada?";
 str5 = "?: ... ... ....";
-str6 = "?: Terás de descobrir o teu sonho... imaginá-lo... pintá-lo... #   e, quem sabe, enfrentares os teus maiores pesadelos! #   Boa sorte! Irás precisar... MUAHAHAHAHAHA [riso sádico]";
+str6 = "?: Terás de descobrir o teu sonho... imaginá-lo... pintá-lo... #   e, quem sabe, enfrentares os teus maiores pesadelos! #   Boa sorte! Irás precisar... MUAHAHAHAHAHA [riso maléfico]";
 
 draw_set_color(c_white)
 
