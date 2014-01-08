@@ -806,6 +806,9 @@
     <instance objName="obj_catchable_materia_x" x="824" y="328" name="inst_F045EF7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="896" y="232" name="inst_F67CBC0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="1248" y="320" name="inst_02F052B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_clock" x="480" y="288" name="inst_8547B249" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_clock" x="896" y="304" name="inst_DCE29DBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_clock" x="680" y="224" name="inst_E9B8726E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

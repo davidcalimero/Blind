@@ -544,7 +544,6 @@ audio_play_sound_on(emitter_ambient,snd_rain1,true,1)</code>
     <instance objName="obj_catchable_materia_x" x="288" y="184" name="inst_420F0C83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="184" y="56" name="inst_D4F7D4E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="48" y="80" name="inst_3F338C26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_clock" x="120" y="280" name="inst_6E029369" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock" x="40" y="184" name="inst_A62A5624" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock" x="160" y="96" name="inst_6FA3F591" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_clock" x="176" y="216" name="inst_29597F3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

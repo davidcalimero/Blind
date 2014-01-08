@@ -28,7 +28,8 @@
             <string>audio_stop_all()
 
 obj_controller.game_over = 1
-obj_controller.level = 1
+
+obj_controller.level++  // incrementa o nivel
 </string>
           </argument>
         </arguments>
