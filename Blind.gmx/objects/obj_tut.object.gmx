@@ -161,7 +161,7 @@ if(timer &gt; 4)
             if (typed_letters4 &lt; string_length(str4)) {typed_letters4 += 0.85};
         }
     }
-    if(obj_character.x &lt; 1050){
+    if(obj_character.x &lt; 940){
         if(obj_character.x &gt; 500){
             draw_text(8, 80, string_copy(str5, 0, typed_letters5));
             if (typed_letters5 &lt; string_length(str5)) {typed_letters5 += 0.85};
