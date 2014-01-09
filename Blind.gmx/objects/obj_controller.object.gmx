@@ -152,7 +152,7 @@
         num_clocks = 3
         num_enemies = 1
     
-        draw_text(450, 300, string(clocks) + '/4')
+        draw_text(450, 300, string(clocks) + '/3')
         draw_text(450, 350, string(life) + "%")
         draw_text(450, 400, string(enemies_destroyed) + '/1')
     //    draw_text(450, 450, string(points))
