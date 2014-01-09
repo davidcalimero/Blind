@@ -94,7 +94,6 @@
     <object>objects\obj_rocksfalling</object>
     <object>objects\obj_circle</object>
     <object>objects\obj_monsterwall</object>
-    <object>objects\obj_gameending</object>
     <object>objects\obj_clock</object>
     <object>objects\obj_catchable_materia_x</object>
     <object>objects\obj_materia_x</object>

@@ -49,35 +49,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>life</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>611</id>
-        <kind>6</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>level</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>1</string>
+            <string>global.level_selected</string>
           </argument>
         </arguments>
       </action>
@@ -142,7 +118,6 @@
             <string>if (game_over == 0) {
     draw_sprite_stretched(spr_static_materia_x, -1, 20, 10, 30, 30)
     draw_sprite_stretched(spr_tempclock, -1, 70, 10, 30, 30)
-    
     draw_set_color(c_white)
     draw_set_font(ui_number)
     draw_set_halign(fa_left)
@@ -172,7 +147,7 @@
 
     draw_set_halign(fa_left)
     
-    if (level == 1) {
+    if (global.level_selected == 2) {
     
         num_clocks = 3
         num_enemies = 1
@@ -181,7 +156,7 @@
         draw_text(450, 350, string(life) + "%")
         draw_text(450, 400, string(enemies_destroyed) + '/1')
     //    draw_text(450, 450, string(points))
-    } else if (level == 2) {
+    } else if (global.level_selected == 3) {
     
         num_clocks = 3
         num_enemies = 1
@@ -190,7 +165,7 @@
         draw_text(450, 350, string(life) + "%")
         draw_text(450, 400, string(enemies_destroyed) + '/2')
       //  draw_text(450, 450, string(points))    
-    } else if (level == 3) {
+    } else if (global.level_selected == 4) {
     
         num_clocks = 3
         num_enemies = 1
@@ -205,11 +180,11 @@
     draw_set_font(ui_number)    
     draw_set_halign(fa_right)
     
-    if (level == 1)
+    if (global.level_selected == 2)
         draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
-    if (level == 2)
+    if (global.level_selected == 3)
         draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
-    if (level == 3)
+    if (global.level_selected == 4)
         draw_text(750, 550, 'You have reached the end of the Blind demo. Contratulations!')
 
     if (life == 100 &amp;&amp; enemies_destroyed == num_enemies &amp;&amp; clocks == num_clocks) {
@@ -225,6 +200,29 @@
 
 
 } 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_message(string(level))
 </string>
           </argument>
         </arguments>
@@ -271,8 +269,15 @@ room_goto(rm_menu)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (game_over == 2 &amp;&amp; level &lt; 3)
+            <string>audio_stop_all()
+
+if (obj_controller.level &lt; 4)
+    obj_controller.level++  // incrementa o nivel
+
+if (game_over == 2 &amp;&amp; global.level_selected &lt; 4)
     room_goto_next()
+if (level == 4)
+    room_goto(rm_menu)
 </string>
           </argument>
         </arguments>
@@ -296,7 +301,7 @@ room_goto(rm_menu)
           <argument>
             <kind>1</kind>
             <string>audio_stop_all()
-room_restart();
+room_restart()
 </string>
           </argument>
         </arguments>
