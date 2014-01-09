@@ -140,10 +140,10 @@
     draw_set_font(scores_font)
     draw_background(background_scores, 130, 10);
     draw_set_halign(fa_right)
-    draw_text(450, 300, 'Items Collected: ')
-    draw_text(450, 350, 'Life: ')
-    draw_text(450, 400, 'Enemies Destroyed: ')
-    draw_text(450, 450, 'Final Score: ')
+    draw_text(450, 300, 'Itens Colecionados: ')
+    draw_text(450, 350, 'Vida: ')
+    draw_text(450, 400, 'Monstros Derrotados: ')
+    draw_text(450, 450, 'Pontuação Final: ')
 
     draw_set_halign(fa_left)
     
@@ -181,16 +181,16 @@
     draw_set_halign(fa_right)
     
     if (global.level_selected == 2)
-        draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
+        draw_text(750, 550, 'Nível completado. #Pressione Enter para continuar ou Backspace para recomeçar.')
     if (global.level_selected == 3)
-        draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
+        draw_text(750, 550, 'Nível completado. #Pressione Enter para continuar ou Backspace para recomeçar.')
     if (global.level_selected == 4) {
-        draw_set_font(contrats_font)
+        draw_set_font(scores_font)
         draw_set_color(c_yellow)
         draw_set_halign(fa_center)
-        draw_text(400, 475, 'Contratulations!')
+        draw_text(400, 500, 'Parabéns!')
         draw_set_font(scores_font)
-        draw_text(400, 550, 'You have reached the end of the Blind demo.')
+        draw_text(400, 550, 'Chegaste ao final da demonstração do Blind.')
     }
     
     if (life == 100 &amp;&amp; enemies_destroyed == num_enemies &amp;&amp; clocks == num_clocks) {
