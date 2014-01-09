@@ -174,7 +174,7 @@ if(timer &gt; 107 &amp;&amp; timer &lt; 109){
     typed_letters2 = 0;
     //instance_destroy();    
 }
-show_debug_message(string(obj_character.y));
+//show_debug_message(string(obj_character.y));
 
 if(obj_character.x &gt; 1190 &amp;&amp; obj_character.x &lt; 1285){
     draw_text(8, 80, string_copy(str7, 0, typed_letters1));
