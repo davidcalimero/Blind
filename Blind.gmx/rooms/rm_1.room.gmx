@@ -533,13 +533,9 @@ audio_play_sound_on(emitter_ambient,snd_rain1,true,1)</code>
     <instance objName="obj_test" x="168" y="248" name="inst_4BF442AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bee" x="168" y="296" name="inst_7DD5039E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="48" y="176" name="inst_D656593C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="48" y="224" name="inst_ADE7B5CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="48" y="264" name="inst_FF4B3E0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="8" y="264" name="inst_5F8E974B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="88" y="312" name="inst_78F7F1A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="224" y="312" name="inst_694850D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="184" y="232" name="inst_4DA97509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="264" y="232" name="inst_1379CE6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="288" y="184" name="inst_420F0C83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="184" y="56" name="inst_D4F7D4E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="48" y="80" name="inst_3F338C26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

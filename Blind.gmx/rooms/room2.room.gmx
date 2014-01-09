@@ -792,13 +792,11 @@
     <instance objName="obj_rocksfalling" x="344" y="312" name="inst_2D1723E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_rocksfalling" x="936" y="160" name="inst_A9E2092E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_monster_dead" x="40" y="280" name="inst_A5E5934F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="104" y="296" name="inst_D50B3DFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="144" y="288" name="inst_D4640945" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_catchable_materia_x" x="152" y="296" name="inst_D50B3DFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="192" y="296" name="inst_11D812FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="232" y="288" name="inst_9970ADAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="272" y="296" name="inst_63FC1870" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_catchable_materia_x" x="232" y="296" name="inst_63FC1870" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="448" y="224" name="inst_0850AC2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_catchable_materia_x" x="472" y="288" name="inst_976ABCD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_catchable_materia_x" x="472" y="296" name="inst_976ABCD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="520" y="296" name="inst_80E5A169" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="696" y="144" name="inst_1ACA1A73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_catchable_materia_x" x="648" y="336" name="inst_94F8A6C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
