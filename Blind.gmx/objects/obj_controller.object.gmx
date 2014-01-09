@@ -168,11 +168,11 @@
     } else if (global.level_selected == 4) {
     
         num_clocks = 3
-        num_enemies = 1
+        num_enemies = 2
     
         draw_text(450, 300, string(clocks) + '/3')
         draw_text(450, 350, string(life) + "%")
-        draw_text(450, 400, string(enemies_destroyed) + '/1')
+        draw_text(450, 400, string(enemies_destroyed) + '/2')
       //  draw_text(450, 450, string(points))    
     }
     
@@ -184,9 +184,15 @@
         draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
     if (global.level_selected == 3)
         draw_text(750, 550, 'Level Cleared. Press Enter To Continue or Backspace to Restart.')
-    if (global.level_selected == 4)
-        draw_text(750, 550, 'You have reached the end of the Blind demo. Contratulations!')
-
+    if (global.level_selected == 4) {
+        draw_set_font(contrats_font)
+        draw_set_color(c_yellow)
+        draw_set_halign(fa_center)
+        draw_text(400, 475, 'Contratulations!')
+        draw_set_font(scores_font)
+        draw_text(400, 550, 'You have reached the end of the Blind demo.')
+    }
+    
     if (life == 100 &amp;&amp; enemies_destroyed == num_enemies &amp;&amp; clocks == num_clocks) {
         draw_sprite (spr_star, 0, 460, 450)
         draw_sprite (spr_star, 0, 510, 450)
