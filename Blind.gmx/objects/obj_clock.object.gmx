@@ -70,6 +70,10 @@ audio_play_sound_on(emitter_tictoc,snd_tictoc,true,1)
         audio_play_sound_on(emitter_pickup,snd_pickup1,false,1)
         instance_destroy()
     } else {
+        if(stepsToDestruction &gt; 30) {
+            if((stepsToDestruction mod 2) == 0) { image_angle = 1 }
+            else { image_angle = -1 }
+        } else { image_angle = 0 }
         stepsToDestruction -= 1
         y -= 1
     }
