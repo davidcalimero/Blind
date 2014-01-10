@@ -277,12 +277,12 @@ room_goto(rm_menu)
             <kind>1</kind>
             <string>audio_stop_all()
 
-if (obj_controller.level &lt; 4)
-    obj_controller.level++  // incrementa o nivel
 
-if (game_over == 2 &amp;&amp; global.level_selected &lt; 4)
+if (game_over == 2 &amp;&amp; global.level_selected &lt; 4) {
+    global.level_selected++  // incrementa o nivel
     room_goto_next()
-if (level == 4)
+}
+else if (level == 4)
     room_goto(rm_menu)
 </string>
           </argument>
