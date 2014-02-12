@@ -249,20 +249,20 @@ newPosY = temp.y;
 
 if (gamepad_is_connected(0)){
     sp_angle = point_direction(0,0,gamepad_axis_value(0, gp_axisrh),gamepad_axis_value(0, gp_axisrv));
-
-    if(direction &lt; 270 &amp;&amp; direction &gt; 90){
-        temp.sprite_index = spr_left;
-        right = false;
-    }
-    else if (direction &gt; 270 || direction &lt; 90){
-        temp.sprite_index = spr_right;
-        right = true;
-    }
     
     if (abs(gamepad_axis_value(0, gp_axisrh)) &lt; 0.5 &amp;&amp; abs(gamepad_axis_value(0, gp_axisrv)) &lt; 0.5)
         visible = false;
-    else 
+    else {
         visible = true;
+        if(direction &lt; 270 &amp;&amp; direction &gt; 90){
+            temp.sprite_index = spr_left;
+            right = false;
+        }
+        else if (direction &gt; 270 || direction &lt; 90){
+            temp.sprite_index = spr_right;
+            right = true;
+        }        
+    }
 }
 
 direction = sp_angle;
