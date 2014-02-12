@@ -61,6 +61,10 @@
     <sprite>sprites\spr_star</sprite>
     <sprite>sprites\spr_materia_x</sprite>
     <sprite>sprites\spr_static_materia_x</sprite>
+    <sprite>sprites\spr_flying_monster_left</sprite>
+    <sprite>sprites\spr_flying_monster_right</sprite>
+    <sprite>sprites\spr_monster_right</sprite>
+    <sprite>sprites\spr_monster_left</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background_scores_2</background>
