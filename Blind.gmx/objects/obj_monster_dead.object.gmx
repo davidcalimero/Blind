@@ -255,11 +255,18 @@ if (gamepad_is_connected(0)){
     else {
         visible = true;
         if(direction &lt; 270 &amp;&amp; direction &gt; 90){
-            temp.sprite_index = spr_left;
+            if temp.sprite_index == spr_right_moving
+                temp.sprite_index = spr_left_moving
+            if temp.sprite_index == spr_right
+                temp.sprite_index = spr_left
+                
             right = false;
         }
         else if (direction &gt; 270 || direction &lt; 90){
-            temp.sprite_index = spr_right;
+            if temp.sprite_index == spr_left_moving
+                temp.sprite_index = spr_right_moving
+            if temp.sprite_index == spr_left
+                temp.sprite_index = spr_right
             right = true;
         }        
     }
