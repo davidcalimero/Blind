@@ -55,22 +55,32 @@ VerticalPerception = 20     // capacidade de detectar o jogador verticalmente
 NoiseRadius = 200           // raio a que pode ser ouvido pelo jogador
 VelocityX_Angry = 3         // velocidade horizontal (zangado)
 VelocityX_Calm = 2          // velocidade horizontal (calmo)
-StepsToNextAttack = 20      // ataca a cada X steps
+LeapDistance = 10           // distancia do salto do ataque
+DistanceToAttack = 30       // Distancia minima a que tem de estar do jogador para atacar
+StepsToNextAttack = 30      // ataca a cada X steps
 StepsToNextSound = 50       // faz um som a cada X steps
 StepsStaggered = 20         // steps que fica atordoado
+MaxStepsWalking = 60        // numero maximo de steps que anda (calmo)
+MinStepsWalking = 50        // numero minimo de steps que anda (calmo)
+MaxStepsStopped = 20        // numero maximo de steps que fica parado (calmo)
+MinStepsStopped = 10        // numero minimo de steps que fica parado (calmo)
 SoundGain_Impact = 1.0      // multiplicador de volume para o som de impact
 SoundGain_Bark = 1.0        // multiplicador de volume para o som do bark
 SoundGain_Roar = 1.0        // multiplicador de volume para o som do roar
 SoundGain_Hit = 1.0         // multiplicador de volume para o som de atingir
 SoundGain_Death = 1.0       // multiplicador de volume para o som de morrer
+AnimationSpeed = 0.3        // velocidade da animacao das sprites
 visible = false             // invisivel ate ser pintado
 stepsToNextAttack = StepsToNextAttack
 stepsToNextSound = StepsToNextSound
 stepsToEndStagger = 0       // steps ate deixar de estar atordoado
+stepsToStartWalking = 0     // steps para comecar a andar (calmo)
+stepsToStop = MinStepsStopped
 hitsToDie = 4               // pedradas ate morrer
 isPlayerNearby = false      // se o jogador esta perto
 isMovingRight = true        // se o monstro esta a ir para a direita
 isPainted = false           // se ja tiver sido pintado
+isLeaping = false           // se estiver a dar o salto do ataque
 
 emitter_impact = audio_emitter_create()
 emitter_bark = audio_emitter_create()
@@ -84,8 +94,6 @@ audio_emitter_gain(emitter_hit,0.0)
 audio_emitter_gain(emitter_death,0.0)
 audio_emitter_falloff(emitter_bark,100,100,5)
 audio_emitter_falloff(emitter_roar,100,100,5)
-
-//footprints = false
 </string>
           </argument>
         </arguments>
@@ -141,7 +149,7 @@ audio_emitter_position(emitter_death,PlayerObject.x-x,PlayerObject.y-y,0)
 
 if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPerception) { 
     if(!isPlayerNearby) { // se no step passado nao detectava o jogador e agora detecta
-        switch(floor(random(2))) {
+        switch(floor(random(2))) { // ladra porque viu o jogador
             case 0: audio_play_sound_on(emitter_bark,snd_monster2_bark1,false,1) break
             case 1: audio_play_sound_on(emitter_bark,snd_monster2_bark2,false,1) break
         }
@@ -150,18 +158,19 @@ if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPe
     isPlayerNearby = true 
 } else { isPlayerNearby = false }
 
-if(isMovingRight) { sprite_index = spr_monster_right }
-else { sprite_index = spr_monster_left }
+if(isMovingRight) { sprite_index = spr_monster_right }  // se estiver virado para a direita
+else { sprite_index = spr_monster_left }                // se estiver virado para a esquerda
 
-image_speed = 0.3
+if(stepsToEndStagger &gt; 0 || stepsToStartWalking &gt; 0) { image_speed = 0 }    // se estiver parado nao ha animacao
+else image_speed = AnimationSpeed                                           // caso contrario, a animacao continua
 
-if(distanceToPlayer&lt;NoiseRadius) { 
+if(distanceToPlayer&lt;NoiseRadius) { // actualizacao dos emissores sonoros
     audio_emitter_gain(emitter_impact,SoundGain_Impact)
     audio_emitter_gain(emitter_bark,SoundGain_Bark)
     audio_emitter_gain(emitter_roar,SoundGain_Roar)
     audio_emitter_gain(emitter_hit,SoundGain_Hit)
     audio_emitter_gain(emitter_death,SoundGain_Death)
-} else {
+} else { // caso o monstro esteja muito longe, nao se deve ouvir
     audio_emitter_gain(emitter_impact,0)
     audio_emitter_gain(emitter_bark,0)
     audio_emitter_gain(emitter_roar,0)
@@ -196,53 +205,56 @@ if(timer &gt; 0 &amp;&amp; gamepad_is_connected(0))
 timer = timer + 1;
 
 if(isPlayerNearby) {
-    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se estiver atordoado
-    else if(abs(PlayerObject.x-x)&lt;VelocityX_Angry) { x = PlayerObject.x } //se estiver ao alcance do jogador
-    else if(PlayerObject.x&gt;x) { //se estiver a direita do jogador (fora do alcance)
-        x += VelocityX_Angry
-        isMovingRight = true
-    } else { //se estiver a esquerda do jogador (fora do alcance)
-        x -= VelocityX_Angry
-        isMovingRight = false
-    }
-    if(x==PlayerObject.x) {
-        if(stepsToNextAttack==0) {
-            audio_play_sound_on(emitter_impact,snd_impact1,false,1)
-            PlayerObject.health -= 50
-            stepsToNextAttack = StepsToNextAttack
-            if (gamepad_is_connected(0)){
-                timer = -3;
-                gamepad_set_vibration(0, 3, 3);
+    if(PlayerObject.x&gt;x) { isMovingRight = true } //se estiver a direita do jogador
+    else { isMovingRight = false } //se estiver a esquerda do jogador
+    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } // se estiver atordoado
+    else if(abs(PlayerObject.x-x)&lt;=DistanceToAttack) { // se tiver o jogador no seu alcance
+        image_speed = 0
+        if(stepsToNextAttack &lt;= 0) { // se nao tiver de esperar para atacar
+            if(isLeaping) { // se ja tiver dado o salto de ataque
+                if(isMovingRight) { x -= LeapDistance }
+                else { x += LeapDistance }
+                isLeaping = false
+                audio_play_sound_on(emitter_impact,snd_impact1,false,1)
+                PlayerObject.health -= 50
+                stepsToNextAttack = StepsToNextAttack
+                if (gamepad_is_connected(0)){
+                    timer = -3;
+                    gamepad_set_vibration(0, 3, 3);
+                }
+            } else { // se estiver para dar o salto de ataque
+                if(isMovingRight) { x += LeapDistance }
+                else { x -= LeapDistance }
+                isLeaping = true
             }
         } else { stepsToNextAttack -= 1 }
+        
+    } else if(PlayerObject.x&gt;x) { //se estiver a direita do jogador (fora do alcance)
+        x += VelocityX_Angry
+    } else { //se estiver a esquerda do jogador (fora do alcance)
+        x -= VelocityX_Angry
     }
 } else {
-    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se estiver atordoado
-    else if(isMovingRight) { x += VelocityX_Calm }
-    else { x -= VelocityX_Calm }
-}
-
-/*
-if (footprints == false) {
-    for (i = 1; i &lt; 10; i++) {
-        temp = instance_position(x-16, y+i*8, obj_test)
-        if (temp.image_alpha &gt; 0.5) footprints = true
+    if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } // se estiver atordoado
+    else if(stepsToStartWalking&gt;0) { // se estiver parado
+        stepsToStartWalking -= 1
+        if(stepsToStartWalking == 0) { // se no proximo step começar a andar
+            stepsToStop = floor(random(MaxStepsWalking-MinStepsWalking))+MinStepsWalking // da sempre um valor entre min e max
+            switch(floor(random(2))) {
+                case 0: isMovingRight = true break
+                case 1: isMovingRight = false break
+            }
+        }
+    }
+    else if(stepsToStop&gt;0) { // se estiver a andar
+        stepsToStop -= 1
+        if(isMovingRight) { x += VelocityX_Calm }
+        else { x -= VelocityX_Calm }
+        if(stepsToStop == 0) { // se no proximo step parar
+            stepsToStartWalking = floor(random(MaxStepsStopped-MinStepsStopped))+MinStepsStopped // da sempre um valor entre min e max
+        }
     }
 }
-
-if (footprints == true) {
-    for (i = 1; i &lt; 10; i++) {
-        temp = instance_position(x-16, y+i*8, obj_test)
-        temp.image_alpha += 0.01
-        temp = instance_position(x+16, y+i*8, obj_test)
-        temp.image_alpha += 0.01
-    }
-    temp = instance_position(x, y+28, obj_test);
-    temp.image_alpha += 0.5;
-    show_debug_message("X distance: " +  string(x))
-    show_debug_message("Y distance: " +  string(y))
-}
-*/
 </string>
           </argument>
         </arguments>
