@@ -209,7 +209,7 @@ if(isPlayerNearby) {
     else { isMovingRight = false } //se estiver a esquerda do jogador
     if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } // se estiver atordoado
     else if(abs(PlayerObject.x-x)&lt;=DistanceToAttack) { // se tiver o jogador no seu alcance
-        image_speed = 0
+        image_speed = 0 // deve estar parado a espera de atacar
         if(stepsToNextAttack &lt;= 0) { // se nao tiver de esperar para atacar
             if(isLeaping) { // se ja tiver dado o salto de ataque
                 if(isMovingRight) { x -= LeapDistance }

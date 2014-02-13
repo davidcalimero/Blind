@@ -60,15 +60,23 @@ VelocityY_Calm = 1          // velocidade vertical (calmo)
 StepsToNextAttack = 20      // ataca a cada X steps
 StepsToNextSound = 60       // faz um som a cada X steps
 StepsStaggered = 20         // steps que fica atordoado
+MaxStepsWalking = 60        // numero maximo de steps que anda (calmo)
+MinStepsWalking = 50        // numero minimo de steps que anda (calmo)
+MaxStepsStopped = 20        // numero maximo de steps que fica parado (calmo)
+MinStepsStopped = 10        // numero minimo de steps que fica parado (calmo)
 SoundGain_Impact = 1.0      // multiplicador de volume para o som de impacto
 SoundGain_Buzz = 1.0        // multiplicador de volume para o som do zumbido
 SoundGain_Scream = 0.5      // multiplicador de volume para o som do grito
 SoundGain_Hit = 0.5         // multiplicador de volume para o som de atingido
 SoundGain_Death = 0.5       // multiplicador de volume para o som da morte
+AnimationSpeed = 0.35       // velocidade da animacao das sprites
 MaxY = y                    // limite vertical superior
 MinY = y - 15               // limite vertical inferior
 visible = false             // invisivel ate ser pintado
 hitsToDie = 2               // pedradas ate morrer
+stepsToStartWalking = 0     // steps para comecar a andar (calmo)
+stepsToStop = MinStepsStopped
+image_speed = AnimationSpeed
 stepsToNextAttack = StepsToNextAttack
 stepsToNextSound = StepsToNextSound
 stepsToEndStagger = 0       // steps ate acabar o stagger
@@ -90,8 +98,6 @@ audio_emitter_gain(emitter_death,0.0)
 audio_emitter_falloff(emitter_buzz,100,100,5)
 
 audio_play_sound_on(emitter_buzz,snd_bee_buzz1,true,1)
-
-//footprints = false
 </string>
           </argument>
         </arguments>
@@ -159,8 +165,6 @@ if(distanceToPlayer&lt;ViewRadius &amp;&amp; abs(PlayerObject.y-y)&lt;VerticalPe
 if(isMovingRight) { sprite_index = spr_flying_monster_right }
 else { sprite_index = spr_flying_monster_left }
 
-image_speed = 0.35
-
 if(distanceToPlayer&lt;NoiseRadius) { 
     audio_emitter_gain(emitter_buzz,SoundGain_Buzz)
     audio_emitter_gain(emitter_impact,SoundGain_Impact)
@@ -225,38 +229,32 @@ if(isPlayerNearby) {
     } else { stepsToNextSound -= 1 }
 } else {
     if(stepsToEndStagger&gt;0) { stepsToEndStagger -= 1 } //se ainda estiver atordoado
-    else if(isMovingRight) { x += VelocityX_Calm }
-    else { x -= VelocityX_Calm }
-    if(isMovingUp) {
-        if(y&gt;MinY) { y -= VelocityY_Calm }
-        else { isMovingUp = false }
-    } else {
-        if(y&lt;MaxY) { y += VelocityY_Calm }
-        else { isMovingUp = true }
+    else if(stepsToStartWalking&gt;0) { // se estiver parado
+        stepsToStartWalking -= 1
+        if(stepsToStartWalking == 0) { // se no proximo step começar a andar
+            stepsToStop = floor(random(MaxStepsWalking-MinStepsWalking))+MinStepsWalking // da sempre um valor entre min e max
+            switch(floor(random(2))) {
+                case 0: isMovingRight = true break
+                case 1: isMovingRight = false break
+            }
+        }
+    }
+    else if(stepsToStop&gt;0) { // se estiver a andar
+        stepsToStop -= 1
+        if(isMovingRight) { x += VelocityX_Calm }
+        else { x -= VelocityX_Calm }
+        if(isMovingUp) {
+            if(y&gt;MinY) { y -= VelocityY_Calm }
+            else { isMovingUp = false }
+        } else {
+            if(y&lt;MaxY) { y += VelocityY_Calm }
+            else { isMovingUp = true }
+        }
+        if(stepsToStop == 0) { // se no proximo step parar
+            stepsToStartWalking = floor(random(MaxStepsStopped-MinStepsStopped))+MinStepsStopped // da sempre um valor entre min e max
+        }
     }
 }
-
-/*
-if (footprints == false) {
-    for (i = 1; i &lt; 10; i++) {
-        temp = instance_position(x-16, y+i*8, obj_test)
-        if (temp.image_alpha &gt; 0.5) footprints = true
-    }
-}
-
-if (footprints == true) {
-    for (i = 1; i &lt; 10; i++) {
-        temp = instance_position(x-16, y+i*8, obj_test)
-        temp.image_alpha += 0.01
-        temp = instance_position(x+16, y+i*8, obj_test)
-        temp.image_alpha += 0.01
-    }
-    temp = instance_position(x, y+28, obj_test);
-    temp.image_alpha += 0.5;
-    show_debug_message("X distance: " +  string(x))
-    show_debug_message("Y distance: " +  string(y))
-}
-*/
 </string>
           </argument>
         </arguments>
