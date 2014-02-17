@@ -57,6 +57,9 @@ typed_letters5 = 0;
 typed_letters6 = 0;
 
 obj_character.can_start = false;
+skip_story = false;
+vodoo = true;
+skip_message = true;
 </string>
           </argument>
         </arguments>
@@ -139,39 +142,42 @@ str8 = "?: Muahahahahah MUAHAHAHAHA!!!";
 
 draw_set_color(c_white)
 
-if(timer &lt; 58){
-    if(timer &gt; 3){
-        draw_text(8, 80, string_copy(str1, 0, typed_letters1));
-        if (typed_letters1 &lt; string_length(str1)) {typed_letters1 += 0.4};
+if(!skip_story){
+    if(timer &lt; 58){
+        if(timer &gt; 3){
+            draw_text(8, 80, string_copy(str1, 0, typed_letters1));
+            if (typed_letters1 &lt; string_length(str1)) {typed_letters1 += 0.4};
+        }
+        if(timer &gt; 8){
+            draw_text(8, 100, string_copy(str2, 0, typed_letters2));
+            if (typed_letters2 &lt; string_length(str2)) {typed_letters2 += 0.4};
+        }
+        if(timer &gt; 17){
+            draw_text(8, 120, string_copy(str3, 0, typed_letters3));
+            if (typed_letters3 &lt; string_length(str3)) {typed_letters3 += 0.4};
+        }
+        
+        if(timer &gt; 36){
+            draw_text(8, 140, string_copy(str4, 0, typed_letters4));
+            if (typed_letters4 &lt; string_length(str4)) {typed_letters4 += 0.4};
+        }
+        
+        if(timer &gt; 48){
+            draw_text(8, 160, string_copy(str5, 0, typed_letters5));
+            if (typed_letters5 &lt; string_length(str5)) {typed_letters5 += 0.4};
+        }
     }
-    if(timer &gt; 8){
-        draw_text(8, 100, string_copy(str2, 0, typed_letters2));
-        if (typed_letters2 &lt; string_length(str2)) {typed_letters2 += 0.4};
-    }
-    if(timer &gt; 17){
-        draw_text(8, 120, string_copy(str3, 0, typed_letters3));
-        if (typed_letters3 &lt; string_length(str3)) {typed_letters3 += 0.4};
-    }
-    
-    if(timer &gt; 36){
-        draw_text(8, 140, string_copy(str4, 0, typed_letters4));
-        if (typed_letters4 &lt; string_length(str4)) {typed_letters4 += 0.4};
-    }
-    
-    if(timer &gt; 48){
-        draw_text(8, 160, string_copy(str5, 0, typed_letters5));
-        if (typed_letters5 &lt; string_length(str5)) {typed_letters5 += 0.4};
+    if(timer &gt; 58 &amp;&amp; timer &lt; 107){
+         draw_text(8, 80, string_copy(str6, 0, typed_letters6));
+         if (typed_letters6 &lt; string_length(str6)) {typed_letters6 += 0.4};
     }
 }
-if(timer &gt; 58 &amp;&amp; timer &lt; 107){
-     draw_text(8, 80, string_copy(str6, 0, typed_letters6));
-     if (typed_letters6 &lt; string_length(str6)) {typed_letters6 += 0.4};
-}
-if(timer &gt; 107 &amp;&amp; timer &lt; 109){
+if((timer &gt; 107 &amp;&amp; timer &lt; 109 )|| (skip_story &amp;&amp; vodoo)){
     instance_create(0,0,obj_tut);
     obj_character.can_start = true;
     typed_letters1 = 0;
     typed_letters2 = 0;
+    vodoo = false;
     //instance_destroy();    
 }
 //show_debug_message(string(obj_character.y));
@@ -187,6 +193,128 @@ if(obj_character.y &gt; 305){
 }
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>526</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_font</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>12</kind>
+            <font>ui_number</font>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>skip_message &amp;&amp; timer &gt; 5</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>514</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_draw_text</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>2</kind>
+            <string>" Pressiona R2 para saltar a historia.."</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>380</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>500</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="49">
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>skip_story</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>!skip_story</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>skip_message</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
           </argument>
         </arguments>
       </action>

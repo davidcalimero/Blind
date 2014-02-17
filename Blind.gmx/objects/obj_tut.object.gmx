@@ -33,6 +33,7 @@ typed_letters5 = 0;
 typed_letters6 = 0;
 
 timer = 0;
+
 //tr1 = false;
 </string>
           </argument>
@@ -136,9 +137,13 @@ str3 = " Podes atirar pedras para te ajudar a perceber onde# estão os teus obst
 str4 = " Experimenta procurar a plataforma para onde tens de saltar# recorrendo à pedra.";
 str5 = " Estás a ver essa matéria?# É a matériaX. Vai te ajudar a dar um pouco de cor ao teu sonho!# A matériaX é limitada, portanto pensa bem quando a deves usar.";
 str6 = " Do mesmo modo que a pedra, podes utilizar o botão R2# para disparares a matériaX";
+
+
 //show_debug_message(string(obj_character.x));
 //show_debug_message(string(typed_letters3));
 draw_set_color(c_ltgray)
+
+    
 if(timer &gt; 4)
 {   
     if(obj_character.x &lt; 190){ 
